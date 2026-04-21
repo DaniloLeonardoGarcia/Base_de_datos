@@ -1,0 +1,31 @@
+Semana 04 - Operadores Logicos
+
+Operadores Lógicos de Filtrado
+    Estos operadores permiten refinar las búsquedas en SQL:
+        IS NULL: Se utiliza específicamente para verificar si un campo no contiene datos. Es fundamental recordar que no se puede usar el signo igual (=) para detectar nulos.
+        
+        LIKE: Sirve para buscar patrones de texto. Utiliza comodines como % (para representar múltiples caracteres) y _ (para un solo carácter).
+        
+        IN: Verifica si un valor se encuentra dentro de una lista o conjunto específico de opciones.
+        
+        BETWEEN: Comprueba si un dato está dentro de un rango determinado, incluyendo los límites.
+
+Lógica de Tres Valores
+
+    SQL Server no solo maneja TRUE (verdadero) y FALSE (falso), sino también un tercer estado llamado UNKNOWN (desconocido). Este valor aparece siempre que se realizan comparaciones con valores 
+    nulos, lo que puede afectar el resultado final de una condición.
+
+ Agrupación y Funciones Agregadas
+
+        Funciones de Grupo: Realizan cálculos matemáticos y devuelven un único resultado.
+            COUNT: Cuenta el número de registros.
+            SUM: Suma valores.
+            AVG: Calcula el promedio.
+            MIN / MAX: Encuentran el valor mínimo o máximo.
+        GROUP BY: Organiza las filas que tienen valores idénticos en columnas específicas para poder aplicarles funciones de grupo.
+        HAVING: Es el "filtro de los grupos". A diferencia de WHERE, esta cláusula se aplica después de que los datos han sido agrupados.
+
+Condicionales con CASE
+
+CASE: Permite incluir lógica condicional (tipo "si esto sucede, entonces haz aquello") 
+directamente dentro de una consulta. Es útil para categorizar datos automáticamente en los resultados.
