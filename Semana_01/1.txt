@@ -1,0 +1,21 @@
+Semana 01-Introduccion a Base de Datos
+
+¿Qué es una base de datos?
+    Base de datos es un conjunto organizado de informacion que 
+    se almacena de forma estructurada para que sea  facil acceder, gestionar y actualizar.
+Componentes Técnicos (Conceptos desde cero)
+
+    Tabla: Similar a una hoja de cálculo; contiene columnas y filas.
+
+    Campo (Columna): Representa un tipo específico de dato (ej: nombre, precio).
+
+    Registro (Fila): Contiene los datos de un objeto o entidad individual (ej: un cliente o un libro).
+
+    Clave Primaria: Un campo único que sirve para identificar de forma exclusiva cada registro (ej: DNI, ID).
+
+    Consulta (Query): Son las "preguntas" o peticiones que se le hacen a la base de datos para obtener información específica.
+
+Tipos de Bases de Datos
+    Relacional (SQL): Muy estructurada, basada en tablas y relaciones (ej: MySQL, SQL Server).
+
+    No relacional (NoSQL): Más flexible, ideal para datos no estructurados (ej: MongoDB, Firebase).
