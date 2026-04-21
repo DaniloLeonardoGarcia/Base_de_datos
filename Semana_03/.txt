@@ -1,0 +1,20 @@
+Semana 03 - Introduccion a SQL
+
+    Es un sistema de gestión de bases de datos relacional desarrollado por Microsoft que permite almacenar, consultar y manipular datos de manera eficiente.
+    Facilita la gestión, análisis e integración de grandes volúmenes de datos en entornos empresariales.
+
+Diseño y Estructura
+    
+    Modelo Entidad-Relación (ER): Técnica para modelar la estructura de la base de datos basada en Entidades (objetos como Clientes) y Relaciones (interacciones como "un cliente compra").
+    Metadata: Se puede consultar información sobre la estructura de las tablas (columnas y tipos de datos) usando INFORMATION_SCHEMA.COLUMNS.
+
+Comandos Esenciales de SQL
+    
+    AcciónInstrucción   SQLCrear 
+    Base de Datos       CREATE DATABASE Nombre;    
+    Crear Tabla         CREATE TABLE (define columnas y llaves primarias)  
+    Insertar Datos      INSERT INTO (agrega registros nuevos)  
+    Recuperar Datos     SELECT (extrae información de campos específicos) 
+    Filtrar             WHERE (selecciona registros bajo una condición) 
+    Ordenar             ORDER BY (organiza los resultados de forma ascendente o descendente) 
+    Combinar Tablas     INNER JOIN (une filas de dos tablas basándose en una columna común)
