@@ -1,0 +1,20 @@
+Semana02 - Mal uso de llaves primarias (PK) y llaves foráneas (FK)
+
+Conceptos Fundamentales
+    Llave Primaria (PK): Es un campo que asegura que cada registro en una tabla sea único e irrepetible.
+
+    Llave Foránea (FK): Es un campo que permite conectar diferentes tablas, manteniendo la integridad referencial entre ellas.
+
+    Integridad de datos: El uso conjunto de PK y FK evita la redundancia de información y los errores en los datos.
+
+Consecuencias del Mal Diseño
+    Redundancia de datos: Ocurre al incluir información detallada (como nombres de cursos o profesores) directamente en tablas donde no pertenecen.
+
+    Falta de integridad referencial: Sucede cuando se almacenan nombres directamente en lugar de usar una FK que apunte a la tabla de origen.
+
+Solución y Beneficios del Diseño Correcto
+    Profesores: ID_Profesor (PK), Nombre.
+
+    Cursos: ID_Curso (PK), Nombre, ID_Profesor (FK).
+
+    Estudiantes: ID_Estudiante (PK), Nombre, ID_Curso (FK).
