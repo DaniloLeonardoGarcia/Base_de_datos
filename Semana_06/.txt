@@ -1,0 +1,57 @@
+============================================================
+RESUMEN DE SQL: SUBCONSULTAS Y COMBINACIÓN DE TABLAS
+============================================================
+
+1. SUBCONSULTAS (CONSULTAS ANIDADAS)
+------------------------------------------------------------
+Definición: Son consultas insertadas dentro de una consulta principal para obtener datos intermedios.
+
+Tipos de Subconsultas:
+- Escalar: Devuelve un solo valor.
+- De Tabla: Devuelve un conjunto de filas.
+- Correlacionada: Depende de la consulta principal y se evalúa fila por fila.
+
+Operadores Compatibles:
+- Comparación: <, >, <=, >=, =, <>.
+- Lógicos: EXISTS (verifica si hay resultados), NOT EXISTS (verifica ausencia de resultados), e IN.
+
+Ejemplo práctico (Escalar):
+SELECT nombre FROM empleados WHERE salario > (SELECT AVG(salario) FROM empleados);
+
+
+2. CONSULTAS A MÚLTIPLES TABLAS (JOINs)
+------------------------------------------------------------
+Definición: Permiten combinar datos de dos o más tablas basados en una condición relacionada.
+
+Tipos principales de JOIN:
+- INNER JOIN: Devuelve filas solo cuando hay coincidencias en ambas tablas.
+- LEFT JOIN: Devuelve todas las filas de la tabla izquierda y las coincidentes de la derecha; lo no coincidente muestra NULL.
+- RIGHT JOIN: Devuelve todas las filas de la tabla derecha y las coincidentes de la izquierda.
+- FULL JOIN: Devuelve todas las filas de ambas tablas cuando hay una coincidencia en cualquiera de ellas.
+- CROSS JOIN: Genera un producto cartesiano (todas las combinaciones posibles).
+
+Ejemplo práctico (INNER JOIN):
+SELECT e.nombre, d.nombre AS departamento 
+FROM empleados e 
+INNER JOIN departamentos d ON e.departamento_id = d.id;
+
+
+3. UNIÓN DE RESULTADOS (OPERADOR UNION)
+------------------------------------------------------------
+Definición: Combina los resultados de dos o más consultas SELECT en un solo conjunto.
+
+Diferencias clave:
+- UNION: Elimina automáticamente las filas duplicadas de los resultados combinados.
+- UNION ALL: Incluye todos los resultados, manteniendo los duplicados.
+
+Ejemplo práctico:
+SELECT nombre FROM empleados WHERE departamento_id = 1
+UNION
+SELECT nombre FROM empleados WHERE departamento_id = 2;
+
+
+4. UTILIDAD GENERAL
+------------------------------------------------------------
+- Las subconsultas facilitan búsquedas complejas y específicas.
+- Los JOINs son fundamentales para obtener una vista completa de datos relacionados en bases de datos normalizadas.
+============================================================
