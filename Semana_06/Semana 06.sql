@@ -53,6 +53,34 @@ SELECT d.nombre, a.nombreAreaa
 FROM docente d
 FULL JOIN area a on d.area=a.id;
 
+SELECT nombre, salario 
+FROM docente 
+WHERE salario > (SELECT AVG(salario) FROM docente);
+
+SELECT nombre, area 
+FROM docente 
+WHERE area IN (
+    SELECT id 
+    FROM area 
+    WHERE nombreAreaa IN ('Matematicas', 'Ciencias')
+);
+
+SELECT nombreAreaa 
+FROM area a
+WHERE EXISTS (
+    SELECT 1 
+    FROM docente d 
+    WHERE d.area = a.id
+);
+
+SELECT nombreAreaa 
+FROM area a
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM docente d 
+    WHERE d.area = a.id
+);
+
 
 
 
