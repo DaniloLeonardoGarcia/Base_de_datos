@@ -14,6 +14,13 @@ insert into deuda(deudor,mes,monto) values
 ('Diego', 'Abril', 300),
 ('David', 'Febrero', 450);
 
+update deuda
+set monto= 700
+where deudor='William';
+
+delete from deuda
+where deudor = 'Diego';
+
 Select *
 from(
 	select deudor, mes, monto
