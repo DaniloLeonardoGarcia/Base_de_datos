@@ -1,0 +1,45 @@
+Base de Datos - Semana 07: Insert / Delete / Update over, Pivot 
+--------------------------------------------------------------------------------
+
+LOGRO DE APRENDIZAJE
+- Al finalizar la sesión, el estudiante será capaz de realizar operaciones de inserción, eliminación y actualización en bases de datos, utilizando consultas SQL.
+- Así como aplicar la función PIVOT para transformar datos de filas a columnas y analizar información de manera efectiva.
+
+--------------------------------------------------------------------------------
+
+1. INSERCIÓN DE DATOS (INSERT)
+- El comando INSERT INTO permite agregar nuevos registros a una tabla en la base de datos.
+- Ejemplo básico:
+  INSERT INTO Empleados (Nombre, Edad, Puesto) 
+  VALUES ('Juan Pérez', 30, 'Desarrollador'); 
+
+2. ELIMINACIÓN DE DATOS (DELETE)
+- Para eliminar datos de una tabla, usa el comando DELETE.
+- Es importante tener cuidado con la cláusula WHERE para evitar eliminar todos los registros.
+- Ejemplo básico:
+  DELETE FROM Empleados
+  WHERE Nombre = 'Juan Pérez';
+
+3. ACTUALIZACIÓN DE DATOS (UPDATE)
+- Para actualizar datos en una tabla, utiliza el comando UPDATE.
+- Asegúrate de usar la cláusula WHERE para especificar qué registros deben actualizarse.
+- Ejemplo básico:
+  UPDATE Empleados
+  SET Edad = 31
+  WHERE Nombre = 'Juan Pérez';
+
+4. USO DE PIVOT
+- La función PIVOT se usa para convertir datos de filas a columnas.
+- Ejemplo de aplicación: Para pivotar datos y ver los montos de ventas por vendedor y mes, usa la función PIVOT:
+
+  SELECT * 
+  FROM ( 
+      SELECT Vendedor, Mes, Monto 
+      FROM Ventas 
+  ) AS Fuente 
+  PIVOT ( 
+      SUM(Monto) 
+      FOR Mes IN ([Enero], [Febrero]) 
+  ) AS PivotTable; 
+
+- Resultado: Esto dará como resultado una tabla con los meses como columnas y los vendedores como filas, mostrando la suma de montos para cada combinación.
