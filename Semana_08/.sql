@@ -44,7 +44,6 @@ BEGIN
             ROLLBACK TRANSACTION;
 
         SELECT 'Error al registrar la asistencia. Se han revertido los cambios.' AS MensajeOperacion;
-        -- Opcional: puedes lanzar el error original si quieres más detalle
-        -- THROW;
+        
     END CATCH
 END;
