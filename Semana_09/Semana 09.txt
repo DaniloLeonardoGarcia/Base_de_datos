@@ -1,0 +1,29 @@
+====================================================================
+RESUMEN: BASE DE DATOS - RELACIONES DE UNO A MUCHOS
+====================================================================
+
+CONCEPTOS CLAVE: TIPOS DE JOIN
+--------------------------------------------------------------------
+- Cross Join (Producto Cartesiano): Un CROSS JOIN devuelve el producto cartesiano de dos tablas. Esto significa que combina cada fila de la primera tabla con cada fila de la segunda tabla.
+- Inner Join (Union Interna): Un INNER JOIN devuelve solo las filas que tienen coincidencias en ambas tablas basadas en una condicion de union. El INNER JOIN es util para obtener solo las coincidencias entre tablas.
+- Left Join (Union Izquierda): Un LEFT JOIN devuelve todas las filas de la tabla de la izquierda y las filas coincidentes de la tabla de la derecha. Si no hay coincidencia, las columnas de la tabla de la derecha seran NULL. El LEFT JOIN asegura que todas las filas de la tabla principal esten incluidas independientemente de las coincidencias.
+- Right Join (Union Derecha): Un RIGHT JOIN devuelve todas las filas de la tabla de la derecha y las filas coincidentes de la tabla de la izquierda. Si no hay coincidencia, las columnas de la tabla de la izquierda seran NULL. El RIGHT JOIN garantiza que todas las filas de la tabla secundaria aparezcan incluso si no tienen coincidencias en la tabla principal.
+
+EJEMPLOS PRACTICOS EN SQL
+--------------------------------------------------------------------
+- Contexto del ejemplo: Supongamos que tienes dos tablas: Clientes y Pedidos. Un cliente puede tener muchos pedidos, pero cada pedido pertenece a un solo cliente.
+
+- Codigo Inner Join: 
+  SELECT Clientes.Nombre, Pedidos.FechaPedido 
+  FROM Clientes 
+  INNER JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+
+- Codigo Left Join: 
+  SELECT Clientes.Nombre, Pedidos.FechaPedido 
+  FROM Clientes 
+  LEFT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+
+- Codigo Right Join: 
+  SELECT Clientes.Nombre, Pedidos.FechaPedido 
+  FROM Clientes 
+  RIGHT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
