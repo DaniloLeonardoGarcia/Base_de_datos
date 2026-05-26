@@ -1,0 +1,109 @@
+--------------------------------------------------------------------
+SEMANA 08: PROCEDIMIENTO ALMACENADO Y TRANSACCIONES
+--------------------------------------------------------------------
+
+Logro de aprendizaje:
+Al finalizar la sesión, el estudiante desarrollará y optimizará 
+procedimientos almacenados y funciones en SQL Server, y gestionará 
+transacciones utilizando las instrucciones COMMIT y ROLLBACK, 
+demostrando habilidades para mantener la integridad y consistencia 
+de los datos en un entorno de base de datos.
+
+Conceptos Clave y Utilidad:
+- El uso de procedimientos almacenados, funciones y transacciones 
+  en SQL Server permite mejorar la eficiencia del código, facilitar 
+  cálculos complejos y mantener la integridad de los datos en las 
+  operaciones de la base de datos.
+
+Manejo de Transacciones:
+- BEGIN TRANSACTION: Inicia una nueva transacción.
+- BEGIN TRY / BEGIN CATCH: Bloques para manejar errores. BEGIN TRY 
+  contiene el código que se ejecuta en la transacción. BEGIN CATCH 
+  maneja los errores que ocurren dentro del bloque TRY.
+- COMMIT TRANSACTION: Confirma la transacción, haciendo persistentes 
+  todas las operaciones realizadas.
+- ROLLBACK TRANSACTION: Reversa todas las operaciones realizadas en 
+  la transacción si ocurre un error.
+
+Funciones en SQL Server:
+- A diferencia de los procedimientos almacenados, las funciones no 
+  pueden manejar transacciones directamente.
+- Deben ser determinísticas y no pueden realizar operaciones que 
+  cambien el estado de la base de datos (como UPDATE o INSERT en tablas).
+- Se pueden usar en combinación con procedimientos almacenados para 
+  obtener datos o realizar cálculos dentro de una transacción.
+
+Ejemplo Práctico en SQL Server:
+
+CREATE PROCEDURE ProcesarPedido
+    @PedidoID INT
+AS
+BEGIN
+    -- Iniciar la transacción
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Ejecutar una serie de operaciones
+        UPDATE Pedidos
+        SET Estado = 'Procesado'
+        WHERE PedidoID = @PedidoID;
+
+        -- Si todo salió bien, hacer commit de la transacción
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Si ocurrió un error, hacer rollback de la transacción
+        ROLLBACK TRANSACTION;
+
+        -- Manejar el error
+        THROW;
+    END CATCH
+END;
+
+
+--------------------------------------------------------------------
+SEMANA 09: RELACIONES DE UNO A MUCHOS Y JOINS
+--------------------------------------------------------------------
+Curso: Base de Datos
+Tema: Relaciones de uno a muchos
+Docente: Mg. Ing. Juan Ramirez Ticona
+
+Logro de aprendizaje:
+Al finalizar la sesión, el estudiante será capaz de aplicar 
+correctamente las cláusulas Cross Join, Inner Join, Left Join y 
+Right Join para gestionar y analizar relaciones de uno a muchos 
+entre tablas en SQL, demostrando comprensión de cómo cada tipo de 
+join afecta el conjunto de resultados.
+
+Conceptos Clave: Tipos de JOIN:
+- Cross Join (Producto Cartesiano): Devuelve el producto cartesiano 
+  de dos tablas. Combina cada fila de la primera tabla con cada fila 
+  de la segunda tabla.
+- Inner Join (Unión Interna): Devuelve solo las filas que tienen 
+  coincidencias en ambas tablas basadas en una condición de unión. 
+  Es útil para obtener solo los datos relevantes compartidos.
+- Left Join (Unión Izquierda): Devuelve todas las filas de la tabla 
+  de la izquierda y las filas coincidentes de la tabla de la derecha. 
+  Si no hay coincidencia, las columnas de la derecha serán NULL.
+- Right Join (Unión Derecha): Devuelve todas las filas de la tabla 
+  de la derecha y las filas coincidentes de la tabla de la izquierda. 
+  Si no hay coincidencia, las columnas de la izquierda serán NULL.
+
+Ejemplos Prácticos en SQL (Caso Clientes y Pedidos):
+Contexto: Un cliente puede tener muchos pedidos, pero cada pedido 
+pertenece a un solo cliente.
+
+- Código Inner Join:
+  SELECT Clientes.Nombre, Pedidos.FechaPedido
+  FROM Clientes
+  INNER JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+
+- Código Left Join:
+  SELECT Clientes.Nombre, Pedidos.FechaPedido
+  FROM Clientes
+  LEFT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+
+- Código Right Join:
+  SELECT Clientes.Nombre, Pedidos.FechaPedido
+  FROM Clientes
+  RIGHT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
