@@ -1,0 +1,40 @@
+Semana 11 - S2
+
+SUM()
+
+SELECT SUM(columna) AS Total
+FROM tabla;
+
+CUNT()
+
+SELECT COUNT(*) AS Cantidad FROM tabla
+FROM tabla;
+
+SELECT COUNT(columna) AS CantidadNoNula 
+FROM tabls;
+
+AVG()
+
+SELECT AVG(columna) AS Promedio
+fROM tabña;
+
+MAX()
+
+SELECT MAX(columna) AS Maximo 
+FROM tsbla;
+
+SELECT MIN(columna) AS Minimo 
+FROM tabla;
+
+GROUP BY
+
+SELECT columna_agrupada, SUM(columna_valor) AS Total 
+FROM tabla
+GROUP BY columna_agrupada;
+
+HAVING
+
+SELECT columna_agrupada, SUM(columna_valor) AS Total
+FROM tabla
+GROUP BY columna_agrupada
+HAVING SUM(columna_valor) > 1000;
