@@ -1,4 +1,21 @@
+create database empresa
+use empresa
 
+CREATE TABLE empleados (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    fecha_nacimiento DATE,
+    puesto VARCHAR(50),
+    salario DECIMAL(10,2)
+);
+
+CREATE TABLE ventas (
+    id_venta INT PRIMARY KEY,
+    id_empleado INT,
+    fecha_venta DATETIME,
+    cantidad INT,
+    monto DECIMAL(10,2)
 );
 
 INSERT INTO empleados (id, nombre, apellido, fecha_nacimiento, puesto, salario) VALUES
