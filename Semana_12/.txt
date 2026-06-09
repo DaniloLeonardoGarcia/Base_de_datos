@@ -1,0 +1,73 @@
+Subconsultas
+
+• Funciones de fecha: DAY, MONTH, YEAR, DATEADD, DATEDIFF, GETDATE
+• Funciones de cadena: CONCAT, LEN, SUBSTRING, LOWER, UPPER, LTRIM, RTRIM
+• Funciones de conversión: CAST, CONVERT
+
+en consultas SQL para resolver problemas prácticos de manipulación y análisis de datos.
+
+
+CONOCIMIENTOS PREVIOS
+• ¿Cuál es la diferencia entre una subconsulta que utiliza IN y una que utiliza EXISTS?
+• ¿Cómo puedes obtener el nombre del mes en texto completo a partir de una fecha en SQL Server?
+• ¿Cuál es la diferencia entre las funciones CAST y CONVERT en SQL Server?
+
+
+UTILIDAD
+• ¿En qué situaciones es más eficiente utilizar IN en lugar de EXISTS y viceversa?
+• ¿Cómo calcular la edad de una persona a partir de su fecha de nacimiento?
+• ¿En qué casos es preferible usar CAST en lugar de CONVERT?
+
+
+SUBCONSULTAS
+Las subconsultas son consultas anidadas dentro de otra consulta (SELECT, WHERE o FROM).
+
+1. Subconsulta con IN
+Se usa para verificar si un valor está dentro de un conjunto de resultados.
+
+Ejemplo:
+SELECT nombre
+FROM empleados
+WHERE id IN (SELECT id_empleado 
+             FROM ventas 
+             WHERE cantidad > 100);
+
+
+2. Subconsulta con EXISTS
+Se usa para verificar la existencia de filas. Es más eficiente en muchos casos con grandes volúmenes de datos.
+
+Ejemplo:
+SELECT nombre
+FROM empleados e
+WHERE EXISTS (SELECT 1 
+              FROM ventas v 
+              WHERE e.id = v.id_empleado 
+                AND v.cantidad > 100);
+
+
+FUNCIONES DE FECHA
+
+• GETDATE() → Fecha y hora actual
+• DAY(fecha) → Día del mes
+• MONTH(fecha) → Mes
+• YEAR(fecha) → Año
+• DATEADD(intervalo, cantidad, fecha) → Agrega tiempo
+• DATEDIFF(intervalo, fecha_inicio, fecha_fin) → Diferencia entre fechas
+
+
+FUNCIONES DE CADENA
+
+• CONCAT(cadenas) → Une cadenas
+• LEN(cadena) → Longitud
+• SUBSTRING(cadena, inicio, longitud) → Extrae parte
+• LOWER(cadena) / UPPER(cadena) → Minúsculas / Mayúsculas
+• LTRIM(cadena) / RTRIM(cadena) → Elimina espacios izquierda/derecha
+
+
+FUNCIONES DE CONVERSIÓN
+
+• CAST(expresión AS tipo) → Conversión básica
+• CONVERT(tipo, expresión, [estilo]) → Conversión con formato (más flexible)
+
+Ejemplo CONVERT:
+SELECT CONVERT(VARCHAR, GETDATE(), 103) AS FechaDDMMYYYY
