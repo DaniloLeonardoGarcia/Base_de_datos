@@ -1,0 +1,36 @@
+S14 - Manejo de Transacciones
+
+Las transacciones en SQL Server aseguran que un conjunto de operaciones se ejecute como una unidad coherente, manteniendo la integridad y consistencia de los datos mediante la confirmación de cambios (COMMIT) o su reversión (ROLLBACK).
+
+Manejo de transacciones
+En SQL Server, el manejo de transacciones es una parte crucial para asegurar la integridad y consistencia de los datos en una base de datos. Las transacciones permiten agrupar una o más operaciones SQL en una unidad lógica de trabajo, que puede ser confirmada (commit) o revertida (rollback) como un todo.
+
+Transacción
+Una transacción es una secuencia de operaciones que se ejecutan como una unidad indivisible. Todas las operaciones dentro de una transacción deben completarse con éxito; si alguna falla, todas deben revertirse para mantener la coherencia de los datos.
+
+COMMIT
+El comando COMMIT se utiliza para confirmar una transacción. Todos los cambios realizados durante la transacción se hacen permanentes en la base de datos.
+
+ROLLBACK
+El comando ROLLBACK se utiliza para deshacer una transacción. Si ocurre algún error, revierte todos los cambios hechos desde el inicio de la transacción.
+
+Ejemplo de código:
+BEGIN TRANSACTION;
+
+UPDATE Cuentas SET Saldo = Saldo - 100 WHERE ID = 1;
+UPDATE Cuentas SET Saldo = Saldo + 100 WHERE ID = 2;
+
+COMMIT;
+-- ROLLBACK;
+
+Explicación
+- BEGIN TRANSACTION; inicia la transacción.
+- Las operaciones UPDATE forman parte de la transacción.
+- COMMIT confirma los cambios permanentemente.
+- ROLLBACK revierte todos los cambios si algo falla.
+
+Importancia del ROLLBACK
+Evita que la base de datos quede en un estado inconsistente (ejemplo: se descuenta dinero de una cuenta pero no se deposita en la otra).
+
+Consideraciones adicionales
+Savepoints: Permiten hacer rollback parcial dentro de una misma transacción.
