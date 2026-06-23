@@ -1,0 +1,74 @@
+S13 - Transact SQL
+
+Las funciones, procedimientos almacenados, variables, condicionales y cursores en T-SQL permiten automatizar, optimizar y personalizar la manipulación y consulta de datos en SQL Server.
+
+Funciones
+Las funciones en T-SQL son bloques de código reutilizables que devuelven un valor.
+
+Ejemplo:
+CREATE FUNCTION dbo.CalcularAreaCirculo (@Radio FLOAT)
+RETURNS FLOAT
+AS
+BEGIN
+    DECLARE @Area FLOAT;
+    SET @Area = PI() * @Radio * @Radio;
+    RETURN @Area;
+END;
+
+SELECT dbo.CalcularAreaCirculo(5) AS Area;
+
+Procedimientos Almacenados
+Los procedimientos almacenados ejecutan una serie de comandos SQL.
+
+Ejemplo:
+CREATE PROCEDURE dbo.InsertarEmpleado
+    @Nombre NVARCHAR(50),
+    @Edad INT,
+    @Departamento NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO Empleados (Nombre, Edad, Departamento)
+    VALUES (@Nombre, @Edad, @Departamento);
+END;
+
+EXEC dbo.InsertarEmpleado 'Juan Pérez', 30, 'Ventas';
+
+Manejo de Variables
+DECLARE @Nombre NVARCHAR(50);
+DECLARE @Edad INT;
+
+SET @Nombre = 'Ana Gómez';
+SET @Edad = 28;
+
+SELECT @Nombre AS Nombre, @Edad AS Edad;
+
+Condicional IF
+DECLARE @Edad INT = 25;
+
+IF @Edad >= 18
+BEGIN
+    PRINT 'La persona es adulta.';
+END
+ELSE
+BEGIN
+    PRINT 'La persona es menor de edad.';
+END;
+
+Programación de Cursores
+DECLARE @Nombre NVARCHAR(50);
+DECLARE @Edad INT;
+
+DECLARE empleado_cursor CURSOR FOR
+SELECT Nombre, Edad FROM Empleados;
+
+OPEN empleado_cursor;
+FETCH NEXT FROM empleado_cursor INTO @Nombre, @Edad;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    PRINT 'Nombre: ' + @Nombre + ', Edad: ' + CAST(@Edad AS NVARCHAR);
+    FETCH NEXT FROM empleado_cursor INTO @Nombre, @Edad;
+END;
+
+CLOSE empleado_cursor;
+DEALLOCATE empleado_cursor;
